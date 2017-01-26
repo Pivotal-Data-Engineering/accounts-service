@@ -56,7 +56,7 @@ public class AccountController {
 	 * @return The account object if found.
 	 */
 	@RequestMapping(value = "/account/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Account> find(@PathVariable("id") final Integer id) {
+	public ResponseEntity<Account> find(@PathVariable("id") final String id) {
 
 		logger.info("AccountController.find: id=" + id);
 
@@ -71,7 +71,7 @@ public class AccountController {
 
 		logger.info("AccountController.findAccount: id=" + id);
 
-		Account accountResponse = this.service.findAccount(id);
+		Account accountResponse = this.service.findAccountByUserId(id);
 		return new ResponseEntity<Account>(accountResponse, getNoCacheHeaders(), HttpStatus.OK);
 
 	}
@@ -89,7 +89,7 @@ public class AccountController {
 
 		logger.debug("AccountController.save: userId=" + accountRequest.getUserid());
 
-		Integer accountProfileId = this.service.saveAccount(accountRequest);
+		String accountProfileId = this.service.saveAccount(accountRequest);
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.setLocation(builder.path("/account/{id}").buildAndExpand(accountProfileId).toUri());
 		return new ResponseEntity<String>(responseHeaders, HttpStatus.CREATED);
@@ -113,7 +113,7 @@ public class AccountController {
 
 		logger.debug("AccountController.decreaseBalance: id='" + userId + "', amount='" + amount + "'");
 
-		Account accountResponse = this.service.findAccount(userId);
+		Account accountResponse = this.service.findAccountByUserId(userId);
 
 		BigDecimal currentBalance = accountResponse.getBalance();
 
@@ -148,7 +148,7 @@ public class AccountController {
 
 		logger.debug("AccountController.increaseBalance: id='" + userId + "', amount='" + amount + "'");
 
-		Account accountResponse = this.service.findAccount(userId);
+		Account accountResponse = this.service.findAccountByUserId(userId);
 
 		BigDecimal currentBalance = accountResponse.getBalance();
 

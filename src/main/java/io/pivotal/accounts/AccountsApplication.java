@@ -1,12 +1,17 @@
 package io.pivotal.accounts;
 
+import io.pivotal.accounts.config.SpringApplicationContextInitializer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.sleuth.Sampler;
 import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
 /**
  * Microservice to manage user accounts.
  * 
@@ -16,7 +21,8 @@ import org.springframework.context.annotation.Bean;
  * @author David Ferreira Pinto
  *
  */
-@SpringBootApplication
+@Configuration
+@ComponentScan
 @EnableDiscoveryClient
 @EnableCircuitBreaker
 public class AccountsApplication {
@@ -27,6 +33,9 @@ public class AccountsApplication {
 	}
 	
 	public static void main(String[] args) {
-		SpringApplication.run(AccountsApplication.class, args);
+		new SpringApplicationBuilder(AccountsApplication.class)
+			.initializers(new SpringApplicationContextInitializer())
+			.application()
+			.run(args);
 	}
 }

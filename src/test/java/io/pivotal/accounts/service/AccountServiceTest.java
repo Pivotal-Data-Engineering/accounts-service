@@ -72,8 +72,8 @@ public class AccountServiceTest {
 	 */
 	@Test(expected=NoRecordsFoundException.class)
 	public void doFindNullAccount() {
-		when(repo.findOne(999)).thenReturn(null);
-		service.findAccount(999);
+		when(repo.findOne("999")).thenReturn(null);
+		service.findAccount("999");
 	}
 	
 	/**
