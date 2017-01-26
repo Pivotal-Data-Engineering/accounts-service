@@ -5,8 +5,9 @@ import java.util.List;
 import io.pivotal.accounts.domain.Account;
 import io.pivotal.accounts.domain.AccountType;
 import io.pivotal.accounts.exception.NoRecordsFoundException;
-import io.pivotal.accounts.repository.AccountRepository;
 
+import io.pivotal.accounts.repository.AccountRepository;
+import io.pivotal.accounts.repository.IdGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class AccountService {
 
 	private static final Logger logger = LoggerFactory.getLogger(AccountService.class);
 
+	@Autowired
+	IdGenerator idGenerator;
+
 	/**
 	 * The accounts repository.
 	 */
@@ -37,7 +41,7 @@ public class AccountService {
 	 *            The id of the account.
 	 * @return The account object if found or throws a NoRecordsFoundException.
 	 */
-	public Account findAccount(Integer id) {
+	public Account findAccount(String id) {
 
 		logger.debug("AccountService.findAccount: id=" + id);
 
@@ -60,7 +64,7 @@ public class AccountService {
 	 *            The user id of the account.
 	 * @return The account object if found
 	 */
-	public List<Account> findAccounts(String user) {
+	public Account findAccountByUserId(String user) {
 
 		logger.debug("AccountService.findAccounts: id=" + user);
 
@@ -102,14 +106,24 @@ public class AccountService {
 	 *            The account to save.
 	 * @return the id of the account.
 	 */
-	public Integer saveAccount(Account accountRequest) {
+	public String saveAccount(Account accountRequest) {
 
 		logger.debug("AccountService.saveAccount:" + accountRequest.toString());
 		// need to set some stuff that cannot be null!
 		
 
+		if(accountRequest.getId() == null || "".equals(accountRequest.getId())) {
+			accountRequest.setId(getNextId());
+		}
+
 		Account account = accounts.save(accountRequest);
 		logger.info("AccountService.saveAccount: account saved: " + account);
 		return account.getId();
 	}
+
+	private String getNextId()
+	{
+		return idGenerator.getNextId();
+	}
+
 }

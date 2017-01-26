@@ -38,7 +38,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
  */
 
 @Configuration
-@ComponentScan(basePackages = { "io.pivotal.accounts" })
 public class WebConfig extends WebMvcConfigurationSupport {
 
 	/**

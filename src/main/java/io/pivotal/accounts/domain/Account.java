@@ -17,6 +17,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.gemfire.mapping.Region;
 import org.springframework.format.annotation.DateTimeFormat;
 /**
  * Represents the account.
@@ -28,6 +30,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 @Entity
 @Table(name = "ACCOUNT")
+@Region("Account")
 public class Account implements Serializable {
 	/**
 	 *
@@ -35,9 +38,11 @@ public class Account implements Serializable {
 	private static final long serialVersionUID = -3057275461420965784L;
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
-    @Column(name = "id")
-	private Integer id;
+	@org.springframework.data.annotation.Id
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid", strategy = "uuid")
+	@Column(name = "id")
+	private String id;
 
 	@Column(name = "userid", length = 250)
     @NotNull
@@ -71,11 +76,11 @@ public class Account implements Serializable {
 	@NotNull
 	private String currency;
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

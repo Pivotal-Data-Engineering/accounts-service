@@ -58,8 +58,8 @@ public class AccountController {
 	 *            The id of the account to retrieve the account for.
 	 * @return The account object if found.
 	 */
-	@RequestMapping(value = "/accounts/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Account> find(@PathVariable("id") final Integer id) {
+	@RequestMapping(value = "/account/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Account> find(@PathVariable("id") final String id) {
 
 		logger.info("AccountController.find: id=" + id);
 
@@ -102,7 +102,7 @@ public class AccountController {
 		logger.debug("AccountController.save: userId="
 				+ accountRequest.getUserid());
 
-		Integer accountProfileId = this.service.saveAccount(accountRequest);
+		String accountProfileId = this.service.saveAccount(accountRequest);
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.setLocation(builder.path("/account/{id}")
 				.buildAndExpand(accountProfileId).toUri());
