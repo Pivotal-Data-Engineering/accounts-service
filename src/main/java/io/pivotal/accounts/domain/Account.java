@@ -47,11 +47,11 @@ public class Account implements Serializable {
 	@Column(name = "userid", length = 250)
     @NotNull
     private String userid;
-	
+
 	@Column(name = "name", length = 250)
     @NotNull
     private String name;
-	
+
 	@Column(name = "accounttype")
 	@NotNull
 	@Enumerated(EnumType.STRING)
@@ -71,7 +71,7 @@ public class Account implements Serializable {
 	@Column(name = "balance", precision = 14, scale = 2, nullable=false)
 	@NotNull
     private BigDecimal balance = new BigDecimal(0);
-	
+
 	@Column(name = "currency", length = 3)
 	@NotNull
 	private String currency;

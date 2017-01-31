@@ -145,7 +145,7 @@ public class ServiceTestConfiguration  {
 		accounts.add(account());
 		return accounts;
 	}
-	
+
 	public static Map<String,Object> loginResponse() {
 		Map<String,Object> loginResponse = new HashMap<String, Object>();
 		
@@ -153,7 +153,7 @@ public class ServiceTestConfiguration  {
 		loginResponse.put("accountid", PROFILE_ID);
 		return loginResponse;
 	}
-	
+
 	public static Transaction getDebitTransaction() {
 		Transaction tx = new Transaction();
 		tx.setAccountId(account().getId());
@@ -162,7 +162,7 @@ public class ServiceTestConfiguration  {
 		tx.setCurrency("GBP");
 		return tx;
 	}
-	
+
 	public static Transaction getBadDebitTransaction() {
 		Transaction tx = new Transaction();
 		tx.setAccountId(account().getId());
@@ -171,7 +171,7 @@ public class ServiceTestConfiguration  {
 		tx.setCurrency("GBP");
 		return tx;
 	}
-	
+
 	public static Transaction getCreditTransaction() {
 		Transaction tx = new Transaction();
 		tx.setAccountId(account().getId());
@@ -180,7 +180,7 @@ public class ServiceTestConfiguration  {
 		tx.setCurrency("GBP");
 		return tx;
 	}
-	
+
 	public static Transaction getBadCreditTransaction() {
 		Transaction tx = new Transaction();
 		tx.setAccountId(account().getId());
