@@ -5,17 +5,17 @@ import java.util.Date;
 
 public class Transaction {
 
-	private Integer transactionId;
+	private String transactionId;
 	private BigDecimal amount;
 	private String currency;
-	private Integer accountId;
+	private String accountId;
 	private TransactionType type;
 	private String description;
 	private Date date;
-	public Integer getTransactionId() {
+	public String getTransactionId() {
 		return transactionId;
 	}
-	public void setTransactionId(Integer transactionId) {
+	public void setTransactionId(String transactionId) {
 		this.transactionId = transactionId;
 	}
 	public BigDecimal getAmount() {
@@ -30,10 +30,10 @@ public class Transaction {
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
-	public Integer getAccountId() {
+	public String getAccountId() {
 		return accountId;
 	}
-	public void setAccountId(Integer accountId) {
+	public void setAccountId(String accountId) {
 		this.accountId = accountId;
 	}
 	public TransactionType getType() {

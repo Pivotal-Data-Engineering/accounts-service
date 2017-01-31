@@ -64,7 +64,7 @@ public class AccountService {
 	 *            The user id of the account.
 	 * @return The account object if found
 	 */
-	public Account findAccountByUserId(String user) {
+	public List<Account> findAccounts(String user) {
 
 		logger.debug("AccountService.findAccounts: id=" + user);
 

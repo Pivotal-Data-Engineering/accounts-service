@@ -27,9 +27,7 @@ import io.pivotal.accounts.service.AccountService;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import org.mockito.Mockito;
 import org.springframework.context.annotation.Bean;
@@ -48,7 +46,7 @@ import org.springframework.context.annotation.Profile;
 public class ServiceTestConfiguration  {
 	//Holding constants
 	public static Integer HOLDING_ID = 100;
-	public static String ACCOUNT_ID = "500";
+	public static String ACCOUNT_ID = "5d5873f9-a30e-47ae-b8a6-9963166f2062";
 	public static BigDecimal PURCHASE_PRICE =  BigDecimal.valueOf(50000);
 	public static String SYMBOL = "VMW";
 	public static BigDecimal QUANTITY =  BigDecimal.valueOf(200);

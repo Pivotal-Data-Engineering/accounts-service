@@ -39,8 +39,8 @@ public class Account implements Serializable {
 
 	@Id
 	@org.springframework.data.annotation.Id
-	@GeneratedValue(generator="system-uuid")
-	@GenericGenerator(name="system-uuid", strategy = "uuid")
+	@GeneratedValue(generator = "uuid2")
+	@GenericGenerator(name = "uuid2", strategy = "uuid2")
 	@Column(name = "id")
 	private String id;
 

@@ -103,7 +103,7 @@ public class AccountsControllerTest {
 				.thenReturn(ServiceTestConfiguration.account());
 
 		mockMvc.perform(
-				get("/accounts/" + ServiceTestConfiguration.ACCOUNT_ID)
+				get("/account/" + ServiceTestConfiguration.ACCOUNT_ID)
 						.contentType(MediaType.APPLICATION_JSON).content(
 								convertObjectToJson(ServiceTestConfiguration
 										.account())))

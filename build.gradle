@@ -111,11 +111,12 @@ dependencies {
 		compile "io.pivotal.spring.cloud:spring-cloud-gemfire-connector-core:1.0.0.RELEASE"
 		compile "io.pivotal.spring.cloud:spring-cloud-gemfire-cloudfoundry-connector:1.0.0.RELEASE"
 		compile "io.pivotal.spring.cloud:spring-cloud-gemfire-spring-connector:1.0.0.RELEASE"
-		compile 'org.springframework.data:spring-data-gemfire:1.8.6.RELEASE'
+		compile 'org.springframework.data:spring-data-gemfire:1.9.0.RELEASE'
 
 		//test packages
 		testCompile "org.springframework.boot:spring-boot-starter-test"
 		testCompile "junit:junit:$junitVersion"
+//		testRuntime "org.springframework.cloud:spring-cloud-localconfig-connector:1.2.3.RELEASE"
 		testRuntime "com.jayway.jsonpath:json-path"
 		// Runtime
 		runtime "org.hsqldb:hsqldb"
